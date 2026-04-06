@@ -1,7 +1,8 @@
 import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import { Heart, ChevronRight, ChevronLeft } from "lucide-react";
+import { Heart, ChevronRight, ChevronLeft, Sparkles } from "lucide-react";
 import ConfessionQuestion from "./ConfessionQuestion";
+import FloatingHearts from "./FloatingHearts";
 
 const pages = [
   {
@@ -12,14 +13,18 @@ const pages = [
           animate={{ scale: [1, 1.15, 1] }}
           transition={{ repeat: Infinity, duration: 1.5, ease: "easeInOut" }}
         >
-          <Heart className="w-20 h-20 text-primary fill-primary" />
+          <Heart className="w-20 h-20 text-primary fill-primary drop-shadow-lg" />
         </motion.div>
-        <h1 className="font-handwritten text-5xl sm:text-6xl text-primary text-center leading-tight">
+        <h1 className="font-handwritten text-5xl sm:text-6xl text-primary text-center leading-tight drop-shadow-sm">
           I Have Something<br />To Tell You...
         </h1>
-        <p className="text-muted-foreground text-lg mt-4 font-display italic">
+        <motion.p
+          animate={{ opacity: [0.4, 1, 0.4] }}
+          transition={{ repeat: Infinity, duration: 2 }}
+          className="text-muted-foreground text-lg mt-4 font-display italic"
+        >
           tap to open →
-        </p>
+        </motion.p>
       </div>
     ),
   },
@@ -137,7 +142,7 @@ const pages = [
     id: "page6",
     content: (
       <div className="flex flex-col items-center justify-center h-full gap-5 px-8 text-center">
-        <span className="text-4xl">🤝</span>
+        <Sparkles className="w-10 h-10 text-primary" />
         <p className="font-display text-lg italic text-foreground leading-relaxed">
           Whatever problems I have — I'll fix them. For you, and for myself.
         </p>
@@ -154,10 +159,40 @@ const pages = [
         <p className="font-handwritten text-2xl text-primary mt-2">
           Bas samne se batana, if you're comfortable ♥
         </p>
-        <div className="w-16 h-px bg-primary/40 my-2" />
+        <div className="w-16 h-px bg-primary/40 my-1" />
         <p className="font-display text-lg italic text-primary font-semibold">
           I am waiting for your answer… and what you think about me 🥺
         </p>
+      </div>
+    ),
+  },
+  {
+    id: "page7",
+    content: (
+      <div className="flex flex-col items-center justify-center h-full gap-5 px-8 text-center">
+        <motion.div
+          animate={{ rotate: [0, 10, -10, 0] }}
+          transition={{ repeat: Infinity, duration: 3, ease: "easeInOut" }}
+        >
+          <span className="text-5xl">💌</span>
+        </motion.div>
+        <p className="font-handwritten text-4xl text-primary leading-snug">
+          One last thing...
+        </p>
+        <div className="w-16 h-px bg-primary/40 my-1" />
+        <p className="font-display text-lg italic text-foreground leading-relaxed">
+          No matter what you decide — you'll always have my respect.
+        </p>
+        <p className="font-display text-base text-muted-foreground leading-relaxed">
+          But just know that every word in these pages came straight from my heart.
+        </p>
+        <motion.p
+          animate={{ opacity: [0.6, 1, 0.6] }}
+          transition={{ repeat: Infinity, duration: 2.5 }}
+          className="font-handwritten text-2xl text-primary mt-2"
+        >
+          Now it's your turn... 💗
+        </motion.p>
       </div>
     ),
   },
@@ -202,9 +237,19 @@ const ConfessionCard = () => {
   };
 
   return (
-    <div className="min-h-screen flex items-center justify-center bg-background p-4">
+    <div className="min-h-screen flex items-center justify-center bg-background p-4 relative overflow-hidden">
+      <FloatingHearts />
+
+      {/* Subtle radial glow behind card */}
+      <div
+        className="absolute w-[600px] h-[600px] rounded-full opacity-20 blur-3xl pointer-events-none"
+        style={{
+          background: "radial-gradient(circle, hsl(var(--primary) / 0.3), transparent 70%)",
+        }}
+      />
+
       {/* Spine effect */}
-      <div className="relative w-full max-w-md">
+      <div className="relative w-full max-w-md z-10">
         <div className="absolute left-0 top-4 bottom-4 w-3 bg-primary/20 rounded-l-md -translate-x-full" />
         <div className="absolute left-0 top-2 bottom-2 w-1.5 bg-primary/10 rounded-l-sm -translate-x-[calc(100%+12px)]" />
 
@@ -212,15 +257,25 @@ const ConfessionCard = () => {
         <div
           className="relative bg-card rounded-r-2xl rounded-l-sm overflow-hidden border-l-4 border-primary/30"
           style={{
-            minHeight: 520,
+            minHeight: 540,
             boxShadow: "var(--page-shadow)",
             perspective: "1200px",
           }}
         >
           {/* Page texture lines */}
-          <div className="absolute inset-0 pointer-events-none opacity-[0.03]"
+          <div
+            className="absolute inset-0 pointer-events-none opacity-[0.03]"
             style={{
-              backgroundImage: "repeating-linear-gradient(0deg, transparent, transparent 28px, hsl(var(--foreground)) 28px, hsl(var(--foreground)) 29px)",
+              backgroundImage:
+                "repeating-linear-gradient(0deg, transparent, transparent 28px, hsl(var(--foreground)) 28px, hsl(var(--foreground)) 29px)",
+            }}
+          />
+
+          {/* Corner fold effect */}
+          <div
+            className="absolute top-0 right-0 w-12 h-12 pointer-events-none z-10"
+            style={{
+              background: "linear-gradient(135deg, transparent 50%, hsl(var(--primary) / 0.08) 50%)",
             }}
           />
 
@@ -234,7 +289,7 @@ const ConfessionCard = () => {
               exit="exit"
               transition={{ duration: 0.45, ease: "easeInOut" }}
               className="w-full"
-              style={{ minHeight: 520 }}
+              style={{ minHeight: 540 }}
             >
               {isLastPage ? (
                 <ConfessionQuestion />
@@ -244,20 +299,27 @@ const ConfessionCard = () => {
             </motion.div>
           </AnimatePresence>
 
+          {/* Page number */}
+          <div className="absolute top-4 right-6 font-display text-xs text-muted-foreground/50 italic">
+            {currentPage + 1} / {pages.length}
+          </div>
+
           {/* Navigation */}
           <div className="absolute bottom-4 left-0 right-0 flex justify-between items-center px-6">
             <button
               onClick={goPrev}
               disabled={currentPage === 0}
-              className="p-2 rounded-full bg-secondary text-secondary-foreground disabled:opacity-30 transition-opacity"
+              className="p-2 rounded-full bg-secondary text-secondary-foreground disabled:opacity-30 transition-opacity hover:bg-primary/10"
             >
               <ChevronLeft className="w-5 h-5" />
             </button>
 
             <div className="flex gap-1.5">
               {pages.map((_, i) => (
-                <div
+                <motion.div
                   key={i}
+                  animate={i === currentPage ? { scale: [1, 1.3, 1] } : { scale: 1 }}
+                  transition={{ duration: 0.4 }}
                   className={`w-2 h-2 rounded-full transition-colors ${
                     i === currentPage ? "bg-primary" : "bg-border"
                   }`}
@@ -268,7 +330,7 @@ const ConfessionCard = () => {
             <button
               onClick={goNext}
               disabled={isLastPage}
-              className="p-2 rounded-full bg-secondary text-secondary-foreground disabled:opacity-30 transition-opacity"
+              className="p-2 rounded-full bg-secondary text-secondary-foreground disabled:opacity-30 transition-opacity hover:bg-primary/10"
             >
               <ChevronRight className="w-5 h-5" />
             </button>
