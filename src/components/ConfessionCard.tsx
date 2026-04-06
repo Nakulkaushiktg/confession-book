@@ -154,6 +154,10 @@ const pages = [
         <p className="font-handwritten text-2xl text-primary mt-2">
           Bas samne se batana, if you're comfortable ♥
         </p>
+        <div className="w-16 h-px bg-primary/40 my-2" />
+        <p className="font-display text-lg italic text-primary font-semibold">
+          I am waiting for your answer… and what you think about me 🥺
+        </p>
       </div>
     ),
   },
