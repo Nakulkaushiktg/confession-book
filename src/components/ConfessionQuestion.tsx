@@ -41,7 +41,7 @@ const ConfessionQuestion = () => {
   return (
     <div className="flex flex-col items-center justify-center h-full gap-8 px-10 text-center" style={{ minHeight: 520 }}>
       <p className="font-handwritten text-5xl text-primary">
-        Do you like me too?
+        I wish you like me too, maybe in any way?
       </p>
       <div className="flex gap-6 items-center relative mt-4">
         <button
