@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { Heart, ChevronRight, ChevronLeft } from "lucide-react";
+import ConfessionQuestion from "./ConfessionQuestion";
 
 const pages = [
   {
@@ -13,7 +14,7 @@ const pages = [
         >
           <Heart className="w-20 h-20 text-primary fill-primary" />
         </motion.div>
-        <h1 className="font-handwritten text-6xl text-primary text-center leading-tight">
+        <h1 className="font-handwritten text-5xl sm:text-6xl text-primary text-center leading-tight">
           I Have Something<br />To Tell You...
         </h1>
         <p className="text-muted-foreground text-lg mt-4 font-display italic">
@@ -25,49 +26,146 @@ const pages = [
   {
     id: "page1",
     content: (
-      <div className="flex flex-col items-center justify-center h-full gap-6 px-10 text-center">
-        <p className="font-display text-2xl italic text-foreground leading-relaxed">
-          Every time I see you, my heart skips a beat...
+      <div className="flex flex-col items-center justify-center h-full gap-5 px-8 text-center">
+        <span className="text-4xl">🚇</span>
+        <p className="font-display text-lg italic text-foreground leading-relaxed">
+          I don't know if it's the right time to tell you all this… but I can't keep it inside anymore.
         </p>
-        <span className="font-handwritten text-5xl text-primary mt-2">💕</span>
+        <p className="font-display text-base text-muted-foreground leading-relaxed">
+          I'm sorry if any of this hurts you.
+        </p>
+        <div className="w-16 h-px bg-primary/40 my-2" />
+        <p className="font-display text-lg italic text-foreground leading-relaxed">
+          When we first met on <span className="text-primary font-semibold">5th Feb</span> at the metro — you were wearing a white jersey with red lines and light blue jeans…
+        </p>
+        <p className="font-handwritten text-3xl text-primary mt-1">
+          you caught my eyes ♥
+        </p>
       </div>
     ),
   },
   {
     id: "page2",
     content: (
-      <div className="flex flex-col items-center justify-center h-full gap-6 px-10 text-center">
-        <p className="font-display text-2xl italic text-foreground leading-relaxed">
-          I've been keeping this feeling inside for too long...
+      <div className="flex flex-col items-center justify-center h-full gap-5 px-8 text-center">
+        <span className="text-4xl">✨</span>
+        <p className="font-display text-lg italic text-foreground leading-relaxed">
+          Spending time with you, talking to you — it all started feeling so right.
         </p>
-        <span className="font-handwritten text-5xl text-primary mt-2">🌹</span>
+        <div className="w-16 h-px bg-primary/40 my-2" />
+        <p className="font-display text-base text-muted-foreground leading-relaxed">
+          I don't know what you think of me. I know I have flaws…
+        </p>
+        <p className="font-display text-lg italic text-foreground leading-relaxed">
+          But trust me — when it comes to loyalty and relationships,
+        </p>
+        <p className="font-handwritten text-3xl text-primary">
+          I'm the real one 💫
+        </p>
       </div>
     ),
   },
   {
     id: "page3",
     content: (
-      <div className="flex flex-col items-center justify-center h-full gap-6 px-10 text-center">
-        <p className="font-display text-2xl italic text-foreground leading-relaxed">
-          And I just wanted to say...
+      <div className="flex flex-col items-center justify-center h-full gap-5 px-8 text-center">
+        <span className="text-4xl">🪷</span>
+        <p className="font-display text-lg italic text-foreground leading-relaxed">
+          I really love your vibe. I love your eyes. The way you speak…
         </p>
-        <p className="font-handwritten text-5xl text-primary mt-4">
-          I like you ♥
+        <div className="w-16 h-px bg-primary/40 my-2" />
+        <p className="font-display text-base text-muted-foreground leading-relaxed">
+          In between, everything got messed up. But then…
+        </p>
+        <p className="font-display text-lg italic text-foreground leading-relaxed">
+          When I saw you for the first time in a <span className="text-primary font-semibold">kurti with bindi</span> —
+        </p>
+        <p className="font-handwritten text-3xl text-primary">
+          you got my eyes again 🌹
+        </p>
+      </div>
+    ),
+  },
+  {
+    id: "page4",
+    content: (
+      <div className="flex flex-col items-center justify-center h-full gap-5 px-8 text-center">
+        <span className="text-4xl">💕</span>
+        <p className="font-display text-lg italic text-foreground leading-relaxed">
+          I would've told you all this face to face… but I had no idea how you'd react.
+        </p>
+        <p className="font-display text-base text-muted-foreground leading-relaxed">
+          I don't even know if you think of me as good or bad…
+        </p>
+        <div className="w-16 h-px bg-primary/40 my-2" />
+        <p className="font-display text-lg italic text-foreground leading-relaxed">
+          I'm so emotional about this — I didn't want to cry in front of you.
+        </p>
+        <p className="font-handwritten text-3xl text-primary">
+          so I'm telling you like this 🥺
+        </p>
+      </div>
+    ),
+  },
+  {
+    id: "page5",
+    content: (
+      <div className="flex flex-col items-center justify-center h-full gap-5 px-8 text-center">
+        <motion.div
+          animate={{ scale: [1, 1.2, 1] }}
+          transition={{ repeat: Infinity, duration: 2 }}
+        >
+          <Heart className="w-12 h-12 text-primary fill-primary" />
+        </motion.div>
+        <p className="font-handwritten text-4xl text-primary leading-snug">
+          I really like you a lot
+        </p>
+        <p className="font-display text-lg italic text-foreground leading-relaxed">
+          I started falling for you… and I'm still falling.
+        </p>
+        <div className="w-16 h-px bg-primary/40 my-2" />
+        <p className="font-display text-base text-muted-foreground leading-relaxed">
+          I will never let you down — in any condition. I will always be with you.
+        </p>
+        <p className="font-display text-lg italic text-primary font-semibold">
+          If you give us a chance, you'll never regret it. I promise. 🤞
+        </p>
+      </div>
+    ),
+  },
+  {
+    id: "page6",
+    content: (
+      <div className="flex flex-col items-center justify-center h-full gap-5 px-8 text-center">
+        <span className="text-4xl">🤝</span>
+        <p className="font-display text-lg italic text-foreground leading-relaxed">
+          Whatever problems I have — I'll fix them. For you, and for myself.
+        </p>
+        <p className="font-display text-base text-muted-foreground leading-relaxed">
+          Tu bataegi, main sununga. Always.
+        </p>
+        <div className="w-16 h-px bg-primary/40 my-2" />
+        <p className="font-display text-lg italic text-foreground leading-relaxed">
+          Whatever your answer is — it's accepted. If you need time, take it.
+        </p>
+        <p className="font-display text-base text-muted-foreground leading-relaxed">
+          Saturday tak bata dena… or zyada time chahiye toh woh bhi le sakti hai.
+        </p>
+        <p className="font-handwritten text-2xl text-primary mt-2">
+          Bas samne se batana, if you're comfortable ♥
         </p>
       </div>
     ),
   },
   {
     id: "question",
-    content: null, // handled separately for interactivity
+    content: null,
   },
 ];
 
 const ConfessionCard = () => {
   const [currentPage, setCurrentPage] = useState(0);
   const [direction, setDirection] = useState(1);
-  const [answered, setAnswered] = useState(false);
-  const [noButtonPos, setNoButtonPos] = useState({ x: 0, y: 0 });
 
   const goNext = () => {
     if (currentPage < pages.length - 1) {
@@ -83,82 +181,45 @@ const ConfessionCard = () => {
     }
   };
 
-  const dodgeNo = () => {
-    setNoButtonPos({
-      x: (Math.random() - 0.5) * 200,
-      y: (Math.random() - 0.5) * 200,
-    });
-  };
-
   const isLastPage = currentPage === pages.length - 1;
 
-  const questionPage = (
-    <div className="flex flex-col items-center justify-center h-full gap-8 px-10 text-center">
-      {!answered ? (
-        <>
-          <p className="font-handwritten text-5xl text-primary">
-            Do you like me too?
-          </p>
-          <div className="flex gap-6 items-center relative mt-4">
-            <button
-              onClick={() => setAnswered(true)}
-              className="px-10 py-4 bg-primary text-primary-foreground rounded-full font-handwritten text-2xl shadow-lg hover:scale-110 transition-transform"
-            >
-              Yes! 💖
-            </button>
-            <motion.button
-              animate={noButtonPos}
-              onMouseEnter={dodgeNo}
-              onTouchStart={dodgeNo}
-              className="px-10 py-4 bg-muted text-muted-foreground rounded-full font-handwritten text-2xl shadow hover:scale-110 transition-transform"
-            >
-              No 😢
-            </motion.button>
-          </div>
-          <p className="text-muted-foreground text-sm font-display italic mt-2">
-            (hint: there's only one real option 😏)
-          </p>
-        </>
-      ) : (
-        <motion.div
-          initial={{ scale: 0 }}
-          animate={{ scale: 1 }}
-          transition={{ type: "spring", stiffness: 200 }}
-          className="flex flex-col items-center gap-4"
-        >
-          <span className="text-7xl">🎉</span>
-          <p className="font-handwritten text-5xl text-primary">Yay!!!</p>
-          <p className="font-display text-xl text-foreground italic">
-            You just made me the happiest person ♥
-          </p>
-          <motion.div
-            animate={{ scale: [1, 1.3, 1] }}
-            transition={{ repeat: Infinity, duration: 1 }}
-          >
-            <Heart className="w-16 h-16 text-primary fill-primary" />
-          </motion.div>
-        </motion.div>
-      )}
-    </div>
-  );
-
   const variants = {
-    enter: (d: number) => ({ x: d > 0 ? 300 : -300, opacity: 0, rotateY: d > 0 ? -15 : 15 }),
+    enter: (d: number) => ({
+      x: d > 0 ? 300 : -300,
+      opacity: 0,
+      rotateY: d > 0 ? -15 : 15,
+    }),
     center: { x: 0, opacity: 1, rotateY: 0 },
-    exit: (d: number) => ({ x: d > 0 ? -300 : 300, opacity: 0, rotateY: d > 0 ? 15 : -15 }),
+    exit: (d: number) => ({
+      x: d > 0 ? -300 : 300,
+      opacity: 0,
+      rotateY: d > 0 ? 15 : -15,
+    }),
   };
 
   return (
     <div className="min-h-screen flex items-center justify-center bg-background p-4">
+      {/* Spine effect */}
       <div className="relative w-full max-w-md">
+        <div className="absolute left-0 top-4 bottom-4 w-3 bg-primary/20 rounded-l-md -translate-x-full" />
+        <div className="absolute left-0 top-2 bottom-2 w-1.5 bg-primary/10 rounded-l-sm -translate-x-[calc(100%+12px)]" />
+
         {/* Book card */}
         <div
-          className="relative bg-card rounded-2xl overflow-hidden"
+          className="relative bg-card rounded-r-2xl rounded-l-sm overflow-hidden border-l-4 border-primary/30"
           style={{
-            minHeight: 500,
+            minHeight: 520,
             boxShadow: "var(--page-shadow)",
+            perspective: "1200px",
           }}
         >
+          {/* Page texture lines */}
+          <div className="absolute inset-0 pointer-events-none opacity-[0.03]"
+            style={{
+              backgroundImage: "repeating-linear-gradient(0deg, transparent, transparent 28px, hsl(var(--foreground)) 28px, hsl(var(--foreground)) 29px)",
+            }}
+          />
+
           <AnimatePresence mode="wait" custom={direction}>
             <motion.div
               key={currentPage}
@@ -167,11 +228,15 @@ const ConfessionCard = () => {
               initial="enter"
               animate="center"
               exit="exit"
-              transition={{ duration: 0.4, ease: "easeInOut" }}
+              transition={{ duration: 0.45, ease: "easeInOut" }}
               className="w-full"
-              style={{ minHeight: 500 }}
+              style={{ minHeight: 520 }}
             >
-              {isLastPage ? questionPage : pages[currentPage].content}
+              {isLastPage ? (
+                <ConfessionQuestion />
+              ) : (
+                pages[currentPage].content
+              )}
             </motion.div>
           </AnimatePresence>
 
@@ -185,8 +250,7 @@ const ConfessionCard = () => {
               <ChevronLeft className="w-5 h-5" />
             </button>
 
-            {/* Page dots */}
-            <div className="flex gap-2">
+            <div className="flex gap-1.5">
               {pages.map((_, i) => (
                 <div
                   key={i}
