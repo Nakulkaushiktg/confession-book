@@ -14,8 +14,8 @@ const ConfessionQuestion = () => {
   };
 
   if (answered) {
-  return (
-      <div className="flex flex-col items-center justify-center h-full gap-4 px-10 text-center" style={{ minHeight: 520 }}>
+    return (
+      <div className="flex flex-col items-center justify-center h-full gap-4 px-10 text-center" style={{ minHeight: 540 }}>
         <motion.div
           initial={{ scale: 0 }}
           animate={{ scale: 1 }}
